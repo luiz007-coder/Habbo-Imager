@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habbo Avatar Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #2e2e2e;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        :focus { outline: 0; }
+
+        .centraliza {
+            width: 590px;
+            position: absolute;
+            top: 50%;
+            margin-top: -150px;
+            left: 50%;
+            margin-left: -295px;
+            image-rendering: auto;
+        }
+
+        input, select {
+            background-color: #3f3f3f;
+            width: 200px;
+            height: 30px;
+            padding: 0 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+            color: #f8f8ff;
+            -webkit-appearance: none;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        input[type="text"] {
+            width: 180px;
+        }
+
+        select {
+            background-image: url(https://1.bp.blogspot.com/-Lrc_o4XSWN4/VwsMr_2sf3I/AAAAAAAAAyk/yJaqrrqDOkooUiu-EOqt6Exx4eFu_4fXw/s1600/seta.png);
+            background-repeat: no-repeat;
+            background-position: 176px center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 27px;
+            position: relative;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type="checkbox"] {
+            background-color:#2e2e2e;
+            border-radius: 5px;
+            padding: 0 5px;
+        }
+
+        input[type="radio"]:after, input[type="checkbox"]:after {
+            width: 12px;
+            height: 12px;
+            border-radius: 10px;
+            content: '';
+            display: block;
+            top: 4px;
+            left: -1px;
+            position: relative;
+        }
+
+        input[type="checkbox"]:after {
+            border-radius: 3px;
+        }
+
+        input[type="radio"]:checked:after, input[type="checkbox"]:checked:after {
+            background-color: #999;
+        }
+
+        .tamanhos input[type="radio"] {
+            margin-left: 16px;
+            margin-right: 11px;
+            width: 15px;
+            height: 15px;
+            padding: 0 5px;
+        }
+
+        .tamanhos input[type="radio"]:after {
+            width: 7px;
+            height: 7px;
+        }
+
+        .esquerda {
+            width: 280px;
+            position: relative;
+            float: left;
+        }
+
+        .direita {
+            width: 315px;
+            position: relative;
+            float: left;
+            margin-left: -10px;
+        }
+
+        .titulo {
+            width: 60px;
+            line-height: 40px;
+            color: #ffffff;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .tmais {
+            width: 46px;
+            line-height: 10px;
+            font-size: 10px;
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .tamanhos {
+            width: 185px;
+            float: right;
+            margin: 6px 8px;
+        }
+
+        .link {
+            position: absolute;
+            bottom: 10px;
+        }
+
+        .hotel {
+            background-image: url(https://3.bp.blogspot.com/-8hffUDZi8_c/VslIU_GfKTI/AAAAAAAAEaU/faTD3sYkUsU/s1600/hotel.png), url(https://1.bp.blogspot.com/-Lrc_o4XSWN4/VwsMr_2sf3I/AAAAAAAAAyk/yJaqrrqDOkooUiu-EOqt6Exx4eFu_4fXw/s1600/seta.png);
+            background-repeat: no-repeat;
+            background-position: 10px center, 176px center;
+            padding-left: 37px;
+        }
+
+        .fundo-user {
+            background-color: #3f3f3f;
+            background-position: center;
+            width: 200px;
+            height: 220px;
+            float: left;
+            margin: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+        }
+
+        .avatar {
+            width: 200px;
+            height: 220px;
+            position: relative;
+        }
+
+        .avatar img {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 20px;
+        }
+
+        .menu-girar {
+            background-color: #3f3f3f;
+            padding: 10px;
+            width: 80px;
+            float: right;
+            border-radius: 5px;
+            margin: 5px 0;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+            text-align: center;
+            font-size: 14px;
+            color: #3f3f3f;
+        }
+
+        .girar {
+            width: 80px;
+            height: 25px;
+        }
+
+        .seta-box {
+            background-color: #2e2e2e;
+            width: 15px;
+            height: 15px;
+            padding: 5px;
+            padding-top: 3px;
+            padding-bottom: 7px;
+            float: left;
+            border-radius: 3px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15);
+            transition: all 0.15s;
+            color: #f8f8ff;
+        }
+
+        .seta-box:hover {
+            background-color: rgba(0,0,0,0.15);
+            color: #ffffff;
+        }
+
+        .girar .cabeca {
+            background-image: url(https://1.bp.blogspot.com/-WsBLUqV4J3E/VslIiBgiuaI/AAAAAAAAEaY/wL3J5J7orFE/s1600/cabeca.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 30px;
+            height: 25px;
+            margin-bottom: 10px;
+            float: left;
+        }
+
+        .girar .corpo {
+            background-image: url(https://4.bp.blogspot.com/-rjclYO-iAHo/VslIiMDDQLI/AAAAAAAAEac/fyZLZ8y10TI/s1600/corpo.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 30px;
+            height: 25px;
+            float: left;
+        }
+
+        .formato {
+            background-position: 76px center;
+            width: 100px;
+            margin-right: 0;
+        }
+
+        .so-cabeca {
+            background-image: url(https://4.bp.blogspot.com/-MqlEG2UdvEw/VzsRBhGEvvI/AAAAAAAAFKA/BH6MiiZzT14xlT4756a0wsezwvMkYPTawCLcB/s1600/so-cabeca.png);
+            width: 14px;
+            height: 19px;
+            float: left;
+            margin-left: 15px;
+            margin-top: 6px;
+            margin-right: -5px;
+        }
+
+        #bb {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class='centraliza'>
+    <div class='esquerda'>
+        <div class='titulo'>Nick:</div>
+        <input id="usuario" placeholder=",youiz" name="user" type="text">
+
+        <div class='clearfix'></div>
+
+        <div class='titulo'>Feição:</div>
+        <select id="rosto" name="rosto">
+            <option value="std">Normal</option>
+            <option value="spk">Falando</option>
+            <option value="sml">Sorrindo</option>
+            <option value="srp">Surpreso</option>
+            <option value="agr">Nervoso</option>
+            <option value="sad">Triste</option>
+            <option value="lol">Sem Rosto</option>
+        </select>
+
+        <div class='clearfix'></div>
+
+        <div class='titulo'>Ação:</div>
+        <select id="acao" name="acao">
+            <option value="std">Normal</option>
+            <option value="wlk">Andando</option>
+            <option value="wlk,wav">Andando/Acenando</option>
+            <option value="sit">Sentado</option>
+            <option value="sit,wav">Sentado/Acenando</option>
+            <option value="lay">Deitado</option>
+            <option value="wav">Acenando</option>
+        </select>
+
+        <div class='clearfix'></div>
+
+        <div class='titulo'>Objeto:</div>
+        <select id="objeto" name="objeto">
+            <option value="">Nenhum</option>
+            <option value="0">Nada (Objeto imaginário)</option>
+            <option value="1">Água</option>
+            <option value="44">Bebida Tóxica</option>
+            <option value="6">Café</option>
+            <option value="2">Cenoura</option>
+            <option value="42">Chá Japonês</option>
+            <option value="667">Coquetel</option>
+            <option value="5">Habbo Refri</option>
+            <option value="9">Poção do Amor</option>
+            <option value="3">Sorvete</option>
+            <option value="33">Sorvete (Callipo)</option>
+            <option value="43">Suco de Tomate</option>
+        </select>
+
+        <div id="bb">
+            <input type="checkbox" name="bbcc" id="bbcc" value=",drk="> 
+            <div class='titulo' style='width: 215px; line-height: 30px; text-align: left; float: right;'>Bebendo/Comendo</div>
+        </div>
+
+        <div class='clearfix'></div>
+
+        <div class='titulo'>Tamanho:</div>
+
+        <div class='tamanhos' style='width: 165px; margin-bottom: 17px;'>
+            <label>
+                <input type="radio" name="tamanho" id="tamanho" value="s">
+            </label>
+
+            <label>
+                <input type="radio" checked name="tamanho" id="tamanho" value="b">
+            </label>
+
+            <label>
+                <input type="radio" name="tamanho" id="tamanho" value="l">
+            </label>
+
+            <div class='clearfix'></div>
+            <div class='titulo tmais'>Pequeno</div>
+            <div class='titulo tmais'>Médio</div>
+            <div class='titulo tmais'>Grande</div>
+        </div>
+
+        <div class='clearfix'></div>
+
+        <div class='titulo'>URL:</div>
+        <input type="text" id="url_img" value="https://www.habbo.com.br/habbo-imaging/avatarimage?&user=,youiz&action=std&direction=4&head_direction=4&img_format=png&gesture=std&headonly=0&size=b" />
+    </div>
+
+    <div class='direita'>
+        <select id="hotel" class='hotel' name="hotel">
+            <option value="de">ALE (.DE)</option>
+            <option selected="selected" value="com.br">BR/PT (.COM.BR)</option>
+            <option value="es">ESP (.ES)</option>
+            <option value="fi">FIN (.FI)</option>
+            <option value="fr">FRA (.FR)</option>
+            <option value="com">INTER (.COM)</option>
+            <option value="it">ITA (.IT)</option>
+            <option value="nl">HOL (.NL)</option>
+            <option value="com.tr">TUR (.COM.TR)</option>
+            <option value="ru">RUS (.RU)</option>
+        </select>
+
+        <div class='clearfix'></div>
+
+        <div class='fundo-user'>
+            <a id="img_link" target="_blank" href="https://www.habbo.com.br/habbo-imaging/avatarimage?&user=,youiz&action=std&direction=4&head_direction=4&img_format=png&gesture=std&headonly=0&size=b">
+                <div class="avatar">
+                    <img alt="" src="https://www.habbo.com.br/habbo-imaging/avatarimage?&user=,youiz&action=std&direction=4&head_direction=4&img_format=png&gesture=std&headonly=0&size=b" id="img">
+                </div>
+            </a>
+        </div>
+
+        <div class='menu-girar' style='padding: 14px 10px; margin-top: -35px;'>
+            <div class='so-cabeca'></div>
+            <input type="checkbox" name="cabeca" id="cabeca" value="1" style='margin-left: 5px;'>
+        </div>
+
+        <div class='menu-girar'>
+            <div class='girar'>
+                <div id="h_l" class='seta-box'><i class='fa fa-angle-left'></i></div>
+                <div class='cabeca'></div>
+                <div id="h_r" class='seta-box'><i class='fa fa-angle-right'></i></div>
+            </div>
+
+            <div class='clearfix'></div>
+
+            <div class='girar'>
+                <div id="b_l" class='seta-box'><i class='fa fa-angle-left'></i></div>
+                <div class='corpo'></div>
+                <div id="b_r" class='seta-box'><i class='fa fa-angle-right'></i></div>
+            </div>
+        </div>
+
+        <select id="formato" class='formato' name="formato">
+            <option value="png">PNG</option>
+            <option value="gif">GIF</option>
+        </select>
+
+        <div class='clearfix'></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var dir = [4, 4];
+        function HabboImager() {
+            var hotel = $("#hotel").val();
+            var habbo = $("#usuario").val().length === 0 ? $("#usuario").attr("placeholder") : $("#usuario").val();
+            var action;
+            if ($("#objeto").val().length === 0) {
+                $("#bb").hide('slow');
+                action = $("#acao").val();
+            } else if ($("input[name=bbcc]:checked").length === 1) {
+                $("#bb").show();
+                action = $("#acao").val() + ",drk=" + $("#objeto").val();
+            } else {
+                $("#bb").show('slow');
+                action = $("#acao").val() + ",crr=" + $("#objeto").val();
+            }
+            var head = $("input[name=cabeca]:checked").length === 0 ? 0 : 1;
+            var gesture = $("#rosto").val();
+            var formato = $("#formato").val();
+            var size = $("input[name=tamanho]:checked").val();
+            var url = "http://www.habbo." + hotel + "/habbo-imaging/avatarimage?&user=" + habbo + "&action=" + action + "&direction=" + dir[0] + "&head_direction=" + dir[1] + "&img_format=" + formato + "&gesture=" + gesture + "&headonly=" + head + "&size=" + size;
+            $("#img").attr("src", url);
+            $("#url_img").attr("value", url);
+            $("#img_link").attr("href", url);
+        }
+        
+        $("#usuario").keyup(HabboImager);
+        $("#h_l").click(function() { if (dir[1] < 7) dir[1] += 1; });
+        $("#h_r").click(function() { if (dir[1] > 0) dir[1] -= 1; });
+        $("#b_l").click(function() { if (dir[0] < 7) dir[0] += 1; });
+        $("#b_r").click(function() { if (dir[0] > 0) dir[0] -= 1; });
+        $("#acao, #rosto, #objeto, #formato, #hotel").change(HabboImager);
+        $("input[name=tamanho], #bbcc, #cabeca, #h_l, #h_r, #b_l, #b_r").click(HabboImager);
+        $("#bb").hide();
+        
+        $("#url_img").mouseenter(function() {
+            this.focus();
+            this.select();
+        }).mouseleave(function() {
+            this.blur();
+        });
+    });
+</script>
+</body>
+</html>
